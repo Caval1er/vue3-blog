@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "hunsky install"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.30.0",
@@ -27,5 +28,11 @@
     "unplugin-vue-components": "^0.20.1",
     "vite": "^2.9.9",
     "vue-tsc": "^0.34.7"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
