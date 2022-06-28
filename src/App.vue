@@ -2,7 +2,9 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from '@/components/HelloWorld.vue'
-let a = '5'
+let a = '2'
+let b = '4'
+let m = 5
 </script>
 
 <template>
