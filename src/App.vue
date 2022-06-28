@@ -4,7 +4,7 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 let a = '1'
 let b = '3'
-let m = 5
+let m = '5'
 </script>
 
 <template>
