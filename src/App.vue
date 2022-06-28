@@ -3,7 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from '@/components/HelloWorld.vue'
 let a = '1'
-let b = '4'
+let b = '3'
 let m = 5
 </script>
 
