@@ -5,7 +5,7 @@ const store = useStore()
 
 <template>
   {{ store.couter }}
-  <button @click="store.increment">+</button>
+  <a-button type="primary" @click="store.increment">+</a-button>
 </template>
 
 <style scoped></style>
