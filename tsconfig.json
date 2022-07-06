@@ -13,7 +13,11 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
-    "paths": { "@/*": ["./src/*"], "#/*": ["./types/*"] }
+    "paths": {
+      "@/*": ["./src/*"],
+      "#/*": ["./types/*"],
+      "@assets/*": ["./src/assets/*"]
+    }
   },
   "include": [
     "src/**/*.ts",

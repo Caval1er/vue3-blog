@@ -1,7 +1,7 @@
 import { Modal, message as Message } from 'ant-design-vue'
 import type { ModalFunc, ModalFuncProps } from 'ant-design-vue/lib/modal/Modal'
 import merge from 'deepmerge'
-import {isString} from 'lodash-es'
+import { isString } from 'lodash-es'
 import {
   InfoCircleFilled,
   CheckCircleFilled,
@@ -10,7 +10,8 @@ import {
 export interface ModalOptionsEx extends Omit<ModalFuncProps, 'iconType'> {
   iconType: 'warning' | 'success' | 'error' | 'info'
 }
-export type ModalOptionsPartial = Partial<ModalOptionsEx> & Pick<ModalOptionsEx, 'content'>
+export type ModalOptionsPartial = Partial<ModalOptionsEx> &
+  Pick<ModalOptionsEx, 'content'>
 function getIcon(iconType: string) {
   if (iconType === 'warning') {
     return <InfoCircleFilled class="modal-icon-warning" />
@@ -29,17 +30,20 @@ function renderContent({ content }: Pick<ModalOptionsEx, 'content'>) {
     return content
   }
 }
-function createModalOptions(options: ModalOptionsPartial, icon: string): ModalOptionsPartial {
-  const content=renderContent(options)
+function createModalOptions(
+  options: ModalOptionsPartial,
+  icon: string
+): ModalOptionsPartial {
+  const content = renderContent(options)
   const iconHtml = getIcon(icon)
-  return merge({okText: '确认',
-  centered: true,content,iconHtml},options)
+  return merge({ okText: '确认', centered: true, content, iconHtml }, options)
 }
-function createErrorModal(options: ModalOptionsPartial){
-  return Modal.error(createModalOptions(options,'close'))
+function createErrorModal(options: ModalOptionsPartial) {
+  return Modal.error(createModalOptions(options, 'close'))
 }
 export function useMessage() {
-  return{
-  createMessage: Message, createErrorModal
+  return {
+    createMessage: Message,
+    createErrorModal,
   }
 }

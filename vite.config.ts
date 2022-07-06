@@ -6,11 +6,7 @@ import { createProxy } from './build/vite/proxy'
 export default defineConfig(({ command, mode }) => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
-  console.log(env)
-
   const viteEnv = wrapperEnv(env)
-  console.log(viteEnv)
-
   const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv
   const isBuild = command === 'build'
   return {
@@ -25,6 +21,10 @@ export default defineConfig(({ command, mode }) => {
         {
           find: '#',
           replacement: resolve(__dirname, 'types'),
+        },
+        {
+          find: '@assets',
+          replacement: resolve(__dirname, 'src/assets'),
         },
       ],
     },
