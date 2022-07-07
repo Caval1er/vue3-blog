@@ -1,7 +1,12 @@
 /**
  * global
  * -------------------------------------------------------------------------- */
-
+.markdown-body {
+  color: var(--vp-c-text-1);
+  background-color: var(--vp-c-bg);
+  padding: 40px;
+  position: relative;
+}
 /**
  * Headings
  * -------------------------------------------------------------------------- */
@@ -15,6 +20,7 @@
   position: relative;
   font-weight: 600;
   outline: none;
+  color: var(--vp-c-text-1);
 }
 
 .markdown-body h1 {

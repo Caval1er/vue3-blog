@@ -3,10 +3,9 @@ export interface MarkdownParams {
 }
 
 export interface Header {
-  title: string
-  level: number
-  slug: string
-  children?: Header
+  text: string
+  link: string
+  children: Header[]
 }
 export interface GetHtmlWithHeaderResult {
   html: string

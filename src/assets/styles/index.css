@@ -1,4 +1,4 @@
-@import './components/markdown-vue.css';
-@import './var.css';
+@import './components/article/index.css';
 @import './font.css';
 @import './base.css';
+@import './var.css';

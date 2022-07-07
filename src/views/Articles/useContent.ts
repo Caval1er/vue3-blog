@@ -24,8 +24,10 @@ export const useContent = (
     }
   } else {
     // 调用不需要header的api
+    const headers = ref<Header[]>([])
     return {
       html,
+      headers,
     }
   }
 }

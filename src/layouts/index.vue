@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import LayoutPage from './page.vue'
-import LayoutHeader from './header.vue'
+import LayoutHeader from './header/index.vue'
 import LayoutFooter from './footer.vue'
 </script>
 <style lang="less" scoped></style>

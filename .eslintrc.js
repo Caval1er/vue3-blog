@@ -32,5 +32,6 @@ module.exports = {
         math: 'always',
       },
     ],
+    'vue/multi-word-component-names': 'off',
   },
 }
