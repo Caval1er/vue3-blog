@@ -1,8 +1,10 @@
 <template>
   <div class="switch-apperance-container">
     <switch-button v-model:checked="isDark" @click="toggle"
-      ><span class="sun">sum</span>
-      <span class="moon">moon</span>
+      ><Icon icon="bx:sun" class="sun" /><Icon
+        icon="bytesize:moon"
+        class="moon"
+      />
     </switch-button>
   </div>
 </template>
@@ -50,10 +52,18 @@ const toggle = (newDarkValue: boolean) => {
 <style lang="less" scoped>
 .switch-apperance-container {
   .sun {
+    position: absolute;
     opacity: 1;
+    top: 1px;
+    left: 0px;
+    color: var(--vp-c-text-2);
   }
   .moon {
+    position: absolute;
     opacity: 0;
+    top: 1px;
+    left: 0px;
+    color: var(--vp-c-text-2);
   }
 }
 
@@ -62,5 +72,6 @@ const toggle = (newDarkValue: boolean) => {
 }
 .dark .moon {
   opacity: 1;
+  color: var(--vp-c-text-1);
 }
 </style>

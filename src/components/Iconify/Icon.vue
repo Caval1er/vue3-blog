@@ -17,7 +17,7 @@ const props = defineProps({
   },
   color: {
     type: String,
-    default: 'black',
+    default: 'currentColor',
   },
   size: {
     type: Number,
@@ -27,11 +27,13 @@ const props = defineProps({
 
 const getStyle = computed(() => {
   const { size, color } = props
-  return {
-    fontSize: `${size}px`,
-    color: color,
-    display: 'inline-flex',
-  }
+  return color === 'currentColor'
+    ? { fontSize: `${size}px`, display: 'inline-flex' }
+    : {
+        fontSize: `${size}px`,
+        color: color,
+        display: 'inline-flex',
+      }
 })
 </script>
 

@@ -1,0 +1,37 @@
+.switch-button {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+  border: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-mute);
+  border-radius: 10px;
+}
+
+.switch-button .check {
+  position: absolute;
+  transition: transform 0.25s;
+  width: 18px;
+  height: 18px;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+  background-color: var(--vp-c-white);
+  box-shadow: var(--vp-shadow-1);
+}
+
+.dark .switch-button .check {
+  background-color: var(--vp-c-black);
+}
+.switch-button .icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: block;
+  border-radius: 50%;
+}
+
+.switch-button .check.active {
+  display: inline-block;
+  transform: translateX(28px);
+}

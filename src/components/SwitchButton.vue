@@ -5,7 +5,7 @@
     role="switch"
     @click="changeChecked"
   >
-    <span class="check">
+    <span class="check" :class="{ active: isCheck }">
       <span v-if="$slots.default" class="icon"><slot></slot></span>
     </span>
   </button>

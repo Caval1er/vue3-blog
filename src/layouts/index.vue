@@ -1,7 +1,7 @@
 <template>
   <div class="layout-container">
     <a-layout>
-      <a-layout-header>
+      <a-layout-header :style="{ 'background-color': 'white' }">
         <layout-header />
       </a-layout-header>
       <a-layout-content>
