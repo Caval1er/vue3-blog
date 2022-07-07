@@ -5,15 +5,12 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AAnchor: typeof import('ant-design-vue/es')['Anchor']
-    AAnchorLink: typeof import('ant-design-vue/es')['AnchorLink']
-    ACard: typeof import('ant-design-vue/es')['Card']
     ALayout: typeof import('ant-design-vue/es')['Layout']
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
-    ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
     ErrorLog: typeof import('./src/components/ErrorLog.vue')['default']
+    Icon: typeof import('./src/components/Iconify/Icon.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SwitchButton: typeof import('./src/components/SwitchButton.vue')['default']

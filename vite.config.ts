@@ -35,5 +35,8 @@ export default defineConfig(({ command, mode }) => {
       proxy: createProxy(VITE_PROXY),
     },
     plugins: createVitePlugins(viteEnv, isBuild),
+    optimizeDeps: {
+      include: ['@iconify/iconify'],
+    },
   }
 })

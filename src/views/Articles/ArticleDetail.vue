@@ -17,7 +17,6 @@
 
 <script setup lang="ts">
 import Outline from './components/OutlineItem.vue'
-import { debounce } from 'lodash-es'
 // 获取html和,headers
 import { useContent } from './useContent'
 const { html, headers } = useContent(1)
