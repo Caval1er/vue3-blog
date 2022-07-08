@@ -7,8 +7,9 @@ const ArticleRoute: RouteRecordRaw = {
   component: LAYOUT,
   children: [
     {
-      path: 'detail/:id',
+      path: 'detail/:id(\\d+)',
       name: 'ArticleDetail',
+      props: true,
       component: () => import('@/views/Articles/ArticleDetail.vue'),
     },
   ],

@@ -4,7 +4,7 @@
 .markdown-body {
   color: var(--vp-c-text-1);
   background-color: var(--vp-c-bg);
-  padding: 40px;
+  padding: 15px 24px 15px 25px;
   position: relative;
 }
 /**
@@ -47,7 +47,7 @@
 
 .markdown-body .header-anchor {
   float: left;
-  margin-left: -0.87em;
+  margin-left: -1.5em;
   padding-right: 0.23em;
   font-weight: 500;
   opacity: 0;
@@ -109,6 +109,7 @@
   color: var(--vp-c-brand);
   text-decoration-style: dotted;
   transition: color 0.25s;
+  font-size: 16px;
 }
 
 .markdown-body a:hover {
@@ -446,6 +447,9 @@
   opacity: 0;
 }
 
+.markdown-body [class~='language-']:before {
+  content: 'text';
+}
 .markdown-body [class~='language-c']:before {
   content: 'c';
 }

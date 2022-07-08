@@ -1,10 +1,11 @@
 import { Ref, onMounted, onUnmounted } from 'vue'
 import { throttleAndDebounce } from '@/utils/index'
-const PAGE_OFFSET = 56
+let pageOffset = 56
 export function userActiveAnchor(
   container: Ref<HTMLElement>,
   mark: Ref<HTMLElement>
 ) {
+  // pageOffset = header.value.offsetHeight + 50
   let prevActiveLink: HTMLAnchorElement | null = null
   const onScroll = throttleAndDebounce(setActiveLink, 100)
   onMounted(() => {
@@ -20,7 +21,10 @@ export function userActiveAnchor(
         '.outline-anchor-container .outline-link'
       )
     ) as HTMLAnchorElement[]
-
+    const header = document.querySelector(
+      '.article-detail-container .ant-layout-header'
+    ) as HTMLElement
+    pageOffset = header.offsetHeight + 204
     const anchors = [].slice
       .call(document.querySelectorAll('.markdown-body .header-anchor'))
       .filter((anchor: HTMLAnchorElement) => {
@@ -49,6 +53,7 @@ export function userActiveAnchor(
         return
       }
     }
+    activateLink(null)
   }
   function activateLink(hash: string | null) {
     if (prevActiveLink) {
@@ -64,13 +69,12 @@ export function userActiveAnchor(
     }
 
     const activeLink = prevActiveLink
-    console.log(activeLink)
     if (activeLink) {
       activeLink.classList.add('active')
       mark.value.style.top = activeLink.offsetTop + 4 + 'px'
       mark.value.style.opacity = '1'
     } else {
-      mark.value.style.top = 32 + 'px'
+      // mark.value.style.top = 32 + 'px'
       mark.value.style.opacity = '0'
     }
   }
@@ -83,14 +87,11 @@ export function userActiveAnchor(
     const scrollTop = window.scrollY
     if (scrollTop === 0 && index === 0) {
       return [true, null]
-    } else if (
-      anchor.parentElement!.offsetTop + PAGE_OFFSET - 60 - scrollTop >
-      0
-    ) {
+    } else if (anchor.parentElement!.offsetTop + pageOffset - scrollTop > 0) {
       return [false, null]
     } else if (
       !nextAnchor ||
-      nextAnchor.parentElement!.offsetTop + PAGE_OFFSET - 60 - scrollTop > 0
+      nextAnchor.parentElement!.offsetTop + pageOffset - scrollTop > 0
     ) {
       return [true, anchor.hash]
     }

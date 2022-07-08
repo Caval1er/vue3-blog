@@ -1,9 +1,9 @@
 .article-detail-outline {
   background-color: transparent !important;
-  position: fixed !important;
-  right: 50px;
+  position: sticky !important;
   top: 80px;
   width: 200px;
+  margin-left: 30px;
 }
 
 .article-detail-outline .ant-anchor-wrapper {
@@ -38,6 +38,7 @@
 
 .outline-anchor-container {
   position: relative;
+  /* top: 35rem; */
 }
 
 .outline-anchor-container .outline-mark {

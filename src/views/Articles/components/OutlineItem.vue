@@ -1,7 +1,6 @@
 <template>
   <div ref="container" class="outline-anchor-container">
     <span ref="mark" class="outline-mark"></span>
-    <h1 class="outline-title">目录</h1>
     <nav>
       <ul class="root">
         <li v-for="outlineH2 in outlines" :key="outlineH2.link">

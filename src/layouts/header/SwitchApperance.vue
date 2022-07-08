@@ -37,8 +37,6 @@ const useApperance = () => {
 
 const toggle = (newDarkValue: boolean) => {
   toggleDark(newDarkValue)
-  console.log(newDarkValue)
-
   userPreference.value = isDark.value
     ? query.value?.matches
       ? 'auto'
