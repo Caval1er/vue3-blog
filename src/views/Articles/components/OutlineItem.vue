@@ -4,14 +4,20 @@
     <nav>
       <ul class="root">
         <li v-for="outlineH2 in outlines" :key="outlineH2.link">
-          <a class="outline-link" :href="outlineH2.link">{{
-            outlineH2.text
-          }}</a>
+          <a
+            class="outline-link"
+            :href="outlineH2.link"
+            @click.prevent="scrollToAnchor!(outlineH2.link)"
+            >{{ outlineH2.text }}</a
+          >
           <ul v-if="outlineH2.children">
             <li v-for="outlineH3 in outlineH2.children" :key="outlineH3.link">
-              <a class="outline-link nested" :href="outlineH3.link">{{
-                outlineH3.text
-              }}</a>
+              <a
+                class="outline-link nested"
+                :href="outlineH3.link"
+                @click.prevent="scrollToAnchor!(outlineH3.link)"
+                >{{ outlineH3.text }}</a
+              >
             </li>
           </ul>
         </li>
@@ -23,6 +29,7 @@
 <script setup lang="ts">
 import type { Header } from '#/markdown'
 import { userActiveAnchor } from '../useOutline'
+import { useScrollTo } from '@/composables/useScrollTo'
 import { ref, watch } from 'vue'
 const props = defineProps<{
   outlines: Header[]
@@ -35,7 +42,8 @@ watch(
     outlines.value = props.outlines
   }
 )
-userActiveAnchor(container, mark)
+const onScroll = userActiveAnchor(container, mark)
+const { scrollToAnchor } = useScrollTo(onScroll)
 const outlines = ref(props.outlines)
 </script>
 

@@ -1,9 +1,12 @@
 .article-detail-outline {
   background-color: transparent !important;
-  position: sticky !important;
-  top: 80px;
+  position: fixed !important;
+  top: 130px;
+  right: 100px;
   width: 200px;
-  margin-left: 30px;
+  /* padding-left: 100px; */
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
 }
 
 .article-detail-outline .ant-anchor-wrapper {

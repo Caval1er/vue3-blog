@@ -6,14 +6,16 @@ export function userActiveAnchor(
   mark: Ref<HTMLElement>
 ) {
   // pageOffset = header.value.offsetHeight + 50
-  let prevActiveLink: HTMLAnchorElement | null = null
   const onScroll = throttleAndDebounce(setActiveLink, 100)
+  const onShow = throttleAndDebounce(setOutlineShow, 100)
   onMounted(() => {
-    requestAnimationFrame(setActiveLink)
+    // requestAnimationFrame(setActiveLink)
     window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onShow)
   })
   onUnmounted(() => {
     window.removeEventListener('scroll', onScroll)
+    window.removeEventListener('scroll', onShow)
   })
   function setActiveLink() {
     const links = [].slice.call(
@@ -56,19 +58,18 @@ export function userActiveAnchor(
     activateLink(null)
   }
   function activateLink(hash: string | null) {
+    const prevActiveLink = document.querySelector('.outline-link.active')
     if (prevActiveLink) {
       prevActiveLink.classList.remove('active')
     }
-
+    let activeLink
     if (hash !== null) {
-      prevActiveLink = container.value.querySelector(
+      activeLink = container.value.querySelector(
         `a[href="${decodeURIComponent(hash)}"]`
       ) as HTMLAnchorElement
     } else {
-      prevActiveLink = null
+      activeLink = null
     }
-
-    const activeLink = prevActiveLink
     if (activeLink) {
       activeLink.classList.add('active')
       mark.value.style.top = activeLink.offsetTop + 4 + 'px'
@@ -96,5 +97,19 @@ export function userActiveAnchor(
       return [true, anchor.hash]
     }
     return [false, null]
+  }
+  return onScroll
+}
+
+function setOutlineShow() {
+  const articleDom = document.querySelector('#article-container') as HTMLElement
+  const outlineDom = document.querySelector(
+    '.article-detail-outline'
+  ) as HTMLElement
+  const offToView = articleDom.getBoundingClientRect().top
+  if (offToView <= 180) {
+    outlineDom.style.opacity = '1'
+  } else {
+    outlineDom.style.opacity = '0'
   }
 }

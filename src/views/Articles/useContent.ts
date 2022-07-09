@@ -15,6 +15,8 @@ export const useContent = (
     const headers = ref<Header[]>([])
     onMounted(async () => {
       const ret = await getHtmlWithHeader({ id })
+      console.log('onMounted')
+
       html.value = ret.html
       headers.value = ret.headers
     })

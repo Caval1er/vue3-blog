@@ -1,26 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { basicRoute } from './route'
-import type { App } from 'vue'
+import { App } from 'vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: basicRoute,
-  scrollBehavior: async (to, from, savedPosition) => {
-    // debugger
+  scrollBehavior: (to, from, savedPosition) => {
     if (to.name === 'ArticleDetail' && !to.hash) {
       return new Promise((resolve) => {
         const timeout = setInterval(() => {
-          if (document.querySelector('#article-container')) {
+          if (
+            document.querySelector('#article-container .markdown-body')
+              ?.innerHTML
+          ) {
             clearInterval(timeout)
             resolve({
               el: '#article-container',
+              top: 100,
               behavior: 'smooth',
             })
           }
-        })
+        }, 100)
       })
-    } else if (to.hash && to.path !== from.path) {
-      return new Promise((resolve) => {
+    } else if (to.hash) {
+      return new Promise((resolve, reject) => {
+        let limit = 0
         const timeout = setInterval(() => {
+          limit++
           if (document.querySelector(to.hash)) {
             clearInterval(timeout)
             resolve({
@@ -28,7 +33,12 @@ const router = createRouter({
               behavior: 'smooth',
             })
           }
-        })
+          if (limit > 10) {
+            clearInterval(timeout)
+            // resolve(false)
+            reject(Error(`can't find anchor`))
+          }
+        }, 100)
       })
     } else if (savedPosition) {
       return { ...savedPosition, behavior: 'smooth' }

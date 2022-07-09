@@ -7,36 +7,33 @@
           src="https://web-dev.imgix.net/image/8WbTDNrhLsU0El80frMBGE4eMCD3/mYb1fWj36xhm6z1hQnz5.jpg?auto=format"
           :preview="false"
       /></a-layout-header>
-      <a-layout-content
-        id="article-container"
-        :style="{ 'max-width': '1200px' }"
-      >
-        <a-card :bordered="false">
-          <a-page-header
-            title="Title"
-            sub-title="2022-07-08 17:00"
-            :ghost="false"
-            @back="() => $router.go(-1)"
-          >
-            <a-typography-paragraph
-              :underline="true"
-              :strong="true"
-              :ellipsis="{ rows: 5 }"
-              content="Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
+      <a-layout-content :style="{ 'max-width': '1200px' }">
+        <div id="article-container" ref="articleContainerRef">
+          <a-card :bordered="false">
+            <a-page-header
+              title="Title"
+              sub-title="2022-07-08 17:00"
+              :ghost="false"
+              @back="() => $router.go(-1)"
+            >
+              <a-typography-paragraph
+                :underline="true"
+                :strong="true"
+                :ellipsis="{ rows: 5 }"
+                content="Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
     Design, a design language for background applications, is refined by Ant UED Team. Ant
     Design, a design language for background applications, is refined by Ant UED Team. Ant
     Design, a design language for background applications, is refined by Ant UED Team. Ant
     Design, a design language for background applications, is refined by Ant UED Team. Ant
     Design, a design language for background applications, is refined by Ant UED Team."
-            />
-            <template #tags>
-              <a-tag color="blue">Vue</a-tag>
-            </template>
-          </a-page-header>
-          <article class="markdown-body">
-            <div v-dompurify-html="html"></div>
-          </article>
-        </a-card>
+              />
+              <template #tags>
+                <a-tag color="blue">Vue</a-tag>
+              </template>
+            </a-page-header>
+            <article v-dompurify-html="html" class="markdown-body"></article>
+          </a-card>
+        </div>
       </a-layout-content>
       <a-layout-sider class="article-detail-outline"
         ><Outline :outlines="headers"
@@ -94,6 +91,7 @@ useCodeCopy()
     }
     .ant-page-header {
       background-color: var(--vp-c-bg);
+
       :deep(.ant-page-header-heading-title) {
         font-size: 2.5em;
         color: var(--vp-c-text-1);
@@ -107,6 +105,7 @@ useCodeCopy()
         color: var(--vp-c-text-2);
       }
       :deep(.ant-page-header-content) {
+        padding-top: 50px;
         .ant-typography {
           color: var(--vp-c-text-1);
         }
