@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
     APageHeader: typeof import('ant-design-vue/es')['PageHeader']
+    ASpace: typeof import('ant-design-vue/es')['Space']
     ATag: typeof import('ant-design-vue/es')['Tag']
     ATypographyParagraph: typeof import('ant-design-vue/es')['TypographyParagraph']
     ErrorLog: typeof import('./src/components/ErrorLog.vue')['default']
@@ -20,6 +21,8 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SwitchButton: typeof import('./src/components/SwitchButton.vue')['default']
+    Tags: typeof import('./src/components/Tags/Tags.vue')['default']
+    TagsItem: typeof import('./src/components/Tags/TagsItem.vue')['default']
   }
 }
 

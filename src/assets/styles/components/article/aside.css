@@ -2,8 +2,9 @@
   background-color: transparent !important;
   position: fixed !important;
   top: 130px;
-  right: 100px;
-  width: 200px;
+  right: 2rem;
+  width: 12rem !important;
+  min-width: 0 !important;
   /* padding-left: 100px; */
   transition: opacity 1s ease-in-out;
   opacity: 0;

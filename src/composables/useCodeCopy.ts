@@ -2,9 +2,6 @@ import ClipboardJS from 'clipboard'
 import { onMounted, onUnmounted } from 'vue'
 import { ref } from 'vue'
 
-import { useMessage } from '@/hooks/web/useMessage'
-const message = useMessage().createMessage
-
 export const useCodeCopy = () => {
   const clipboard = ref<ClipboardJS>()
   onMounted(() => {
@@ -14,7 +11,10 @@ export const useCodeCopy = () => {
       },
     })
     clipboard.value?.on('success', function (e) {
-      message.success('复制成功', 1)
+      e.trigger.classList.add('copied')
+      setTimeout(() => {
+        e.trigger.classList.remove('copied')
+      }, 1000)
       e.clearSelection()
     })
   })

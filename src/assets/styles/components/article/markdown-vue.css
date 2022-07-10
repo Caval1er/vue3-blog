@@ -418,22 +418,25 @@
   background-image: var(--vp-icon-copied);
 }
 
-.markdown-body [class*='language-'] > span.copy.copied::before,
-.markdown-body [class*='language-'] > span.copy:hover.copied::before {
-  position: relative;
-  left: -65px;
+.markdown-body [class*='language-'] > span.copy.copied::after,
+.markdown-body [class*='language-'] > span.copy:hover.copied::after {
+  position: absolute;
+  right: 40px;
+  top: 5px;
   display: block;
-  border-radius: 4px 0 0 4px;
-  padding-top: 8px;
-  width: 64px;
-  height: 40px;
+  border-radius: 4px;
+  padding: 5px 16px;
+  width: 90px;
+  height: 30px;
+  line-height: 20px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--vp-code-copy-code-active-text);
-  background-color: var(--vp-code-copy-code-hover-bg);
+  border-color: #4caf50;
+  background-color: #4caf50;
   white-space: nowrap;
-  content: 'Copied';
+  content: '复制成功';
 }
 
 .markdown-body [class*='language-']:before {
