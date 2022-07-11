@@ -9,7 +9,7 @@ export function userActiveAnchor(
   const onScroll = throttleAndDebounce(setActiveLink, 100)
   const onShow = throttleAndDebounce(setOutlineShow, 100)
   onMounted(() => {
-    // requestAnimationFrame(setActiveLink)
+    requestAnimationFrame(setActiveLink)
     window.addEventListener('scroll', onScroll)
     window.addEventListener('scroll', onShow)
   })

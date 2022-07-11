@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Header } from '#/markdown'
+import type { Header } from '#/article'
 import { userActiveAnchor } from '../useOutline'
 import { useScrollTo } from '@/composables/useScrollTo'
 import { ref, watch } from 'vue'
@@ -43,7 +43,7 @@ watch(
   }
 )
 const onScroll = userActiveAnchor(container, mark)
-const { scrollToAnchor } = useScrollTo(onScroll)
+const { scrollToAnchor } = useScrollTo(onScroll, 64)
 const outlines = ref(props.outlines)
 </script>
 

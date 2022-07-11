@@ -3,3 +3,8 @@ export interface Header {
   link: string
   children: Header[]
 }
+
+export interface Tag {
+  name: string
+  color: string
+}

@@ -38,7 +38,7 @@
         collapsible
         :collapsed-width="0"
         :zero-width-trigger-style="{
-          top: '-50px',
+          top: '-70px',
         }"
         ><Outline :outlines="headers"
       /></a-layout-sider>

@@ -12,6 +12,11 @@ const ArticleRoute: RouteRecordRaw = {
       props: true,
       component: () => import('@/views/Articles/ArticleDetail.vue'),
     },
+    {
+      path: 'list',
+      name: 'ArticleList',
+      component: () => import('@/views/Articles/ArticleList.vue'),
+    },
   ],
 }
 

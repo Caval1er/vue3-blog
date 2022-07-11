@@ -1,4 +1,4 @@
-export const useScrollTo = (cancle?: () => void) => {
+export const useScrollTo = (cancle?: () => void, offsetTop = 0) => {
   if (cancle) {
     let timeout: NodeJS.Timeout
     const scrollToAnchor = (href: string) => {
@@ -6,14 +6,22 @@ export const useScrollTo = (cancle?: () => void) => {
         clearTimeout(timeout)
       }
       window.removeEventListener('scroll', cancle)
-      const anchorElement = document.querySelector(href) as HTMLElement
-      anchorElement?.scrollIntoView({
+      const anchorElement = document.querySelector(
+        decodeURIComponent(href)
+      ) as HTMLElement
+      // anchorElement?.scrollIntoView({
+      //   behavior: 'smooth',
+      // })
+      const documentScrollTop = document.documentElement.scrollTop
+      const elementTop = anchorElement.getBoundingClientRect().top
+      window.scrollTo({
+        top: documentScrollTop + elementTop - offsetTop,
         behavior: 'smooth',
       })
       const activeLink = document.querySelector(
         `a[href="${decodeURIComponent(href)}"].outline-link`
       ) as HTMLAnchorElement
-      history.replaceState(null, document.title, href)
+      history.replaceState(history.state, document.title, href)
       const prevActiveLink = document.querySelector('.outline-link.active')
       if (prevActiveLink) {
         prevActiveLink.classList.remove('active')

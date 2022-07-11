@@ -6,8 +6,10 @@ const router = createRouter({
   routes: basicRoute,
   scrollBehavior: (to, from, savedPosition) => {
     if (to.name === 'ArticleDetail' && !to.hash) {
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
+        let limit = 0
         const timeout = setInterval(() => {
+          limit++
           if (
             document.querySelector('#article-container .markdown-body')
               ?.innerHTML
@@ -19,26 +21,31 @@ const router = createRouter({
               behavior: 'smooth',
             })
           }
-        }, 100)
+          if (limit > 360) {
+            clearInterval(timeout)
+            // resolve(false)
+            reject(Error(`can't find anchor`))
+          }
+        }, 16)
       })
     } else if (to.hash) {
       return new Promise((resolve, reject) => {
         let limit = 0
         const timeout = setInterval(() => {
           limit++
-          if (document.querySelector(to.hash)) {
+          console.log(limit)
+          if (document.querySelector(decodeURIComponent(to.hash))) {
             clearInterval(timeout)
             resolve({
               el: to.hash,
               behavior: 'smooth',
             })
           }
-          if (limit > 10) {
+          if (limit > 360) {
             clearInterval(timeout)
-            // resolve(false)
             reject(Error(`can't find anchor`))
           }
-        }, 100)
+        }, 16)
       })
     } else if (savedPosition) {
       return { ...savedPosition, behavior: 'smooth' }

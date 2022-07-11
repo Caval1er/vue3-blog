@@ -5,6 +5,7 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AAvatar: typeof import('ant-design-vue/es')['Avatar']
     ACard: typeof import('ant-design-vue/es')['Card']
     AImage: typeof import('ant-design-vue/es')['Image']
     ALayout: typeof import('ant-design-vue/es')['Layout']
@@ -12,8 +13,13 @@ declare module '@vue/runtime-core' {
     ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
+    AList: typeof import('ant-design-vue/es')['List']
+    AListItem: typeof import('ant-design-vue/es')['ListItem']
+    AListItemMeta: typeof import('ant-design-vue/es')['ListItemMeta']
     APageHeader: typeof import('ant-design-vue/es')['PageHeader']
     ASpace: typeof import('ant-design-vue/es')['Space']
+    ATabPane: typeof import('ant-design-vue/es')['TabPane']
+    ATabs: typeof import('ant-design-vue/es')['Tabs']
     ATag: typeof import('ant-design-vue/es')['Tag']
     ATypographyParagraph: typeof import('ant-design-vue/es')['TypographyParagraph']
     ErrorLog: typeof import('./src/components/ErrorLog.vue')['default']
@@ -21,7 +27,6 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SwitchButton: typeof import('./src/components/SwitchButton.vue')['default']
-    Tags: typeof import('./src/components/Tags/Tags.vue')['default']
     TagsItem: typeof import('./src/components/Tags/TagsItem.vue')['default']
   }
 }
